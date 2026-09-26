@@ -1,0 +1,180 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==========================================
+    // HELPER FUNCTIONS & ACCESS CONTROL
+    // ==========================================
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Secure Admin Gate: checks either admin document or token email against official owner email
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email != null && request.auth.token.email == 'nvisit9@gmail.com')
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128;
+    }
+
+    // 0. Default Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ==========================================
+    // 1. PUBLIC EDUCATIONAL CONTENT (Read-Only to Public, Admin Write)
+    // ==========================================
+    match /syllabi/{syllabusId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /syllabus_versions/{versionId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /questions/{questionId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /current_affairs/{articleId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /vacancies/{vacancyId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /books/{bookId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // 2. USER PROFILES & PRIVATE SUBCOLLECTIONS
+    // ==========================================
+    match /users/{userId} {
+      // Owner can read and write their own profile document; Admin can read and audit
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if (isOwner(userId) && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isAdmin']))) || isAdmin();
+      allow delete: if isAdmin();
+
+      // User subcollections (bookmarks, study_plans, attempts)
+      match /{allSubcollections=**} {
+        allow read, write: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    match /registered_users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create, update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // 3. EXAM ATTEMPTS, SCORES & SUBMISSIONS
+    // ==========================================
+    match /global_exam_results/{resultId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /exam_submissions/{submissionId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /exam_scores/{scoreId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /quiz_attempts/{attemptId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if true; // Allows anonymous diagnostic attempts
+      allow update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // 4. AI CHAT SESSIONS & EVALUATIONS
+    // ==========================================
+    match /chat_sessions/{sessionId} {
+      allow read, write: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    match /test_evaluations/{evalId} {
+      allow read, write: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // ==========================================
+    // 5. ORDERS, PAYMENT VERIFICATIONS & ENTITLEMENTS
+    // ==========================================
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /payment_verifications/{verificationId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /entitlements/{entitlementId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // 6. ANALYTICS & LOGGING
+    // ==========================================
+    match /user_activity_logs/{logId} {
+      allow create: if true; // Telemetry from active app session
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /user_activities/{activityId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /analytics/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /visitor_logs/{logId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /download_events/{downloadId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // 7. ADMIN PRIVILEGES
+    // ==========================================
+    match /admins/{adminId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

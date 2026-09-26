@@ -1,0 +1,211 @@
+{
+  "totalPageViews": 1455,
+  "dailyStats": {
+    "2026-09-26": {
+      "views": 35,
+      "visitors": 1
+    }
+  },
+  "recentVisits": [
+    {
+      "id": "visit_1790405692084",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:54:52.084Z"
+    },
+    {
+      "id": "visit_1790405684352",
+      "path": "/about",
+      "title": "Banking Tayari - about",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:54:44.352Z"
+    },
+    {
+      "id": "visit_1790405549133",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:52:29.133Z"
+    },
+    {
+      "id": "visit_1790405540013",
+      "path": "/learn",
+      "title": "Banking Tayari - learn",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:52:20.013Z"
+    },
+    {
+      "id": "visit_1790405538652",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:52:18.652Z"
+    },
+    {
+      "id": "visit_1790405510099",
+      "path": "/learn",
+      "title": "Banking Tayari - learn",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:51:50.099Z"
+    },
+    {
+      "id": "visit_1790405506905",
+      "path": "/vacancies",
+      "title": "Banking Tayari - vacancies",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:51:46.905Z"
+    },
+    {
+      "id": "visit_1790405467855",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:51:07.855Z"
+    },
+    {
+      "id": "visit_1790405428015",
+      "path": "/store",
+      "title": "Banking Tayari - store",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:50:28.015Z"
+    },
+    {
+      "id": "visit_1790405366604",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:49:26.604Z"
+    },
+    {
+      "id": "visit_1790405340742",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:49:00.742Z"
+    },
+    {
+      "id": "visit_1790404165750",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:29:25.750Z"
+    },
+    {
+      "id": "visit_1790404117759",
+      "path": "/vacancies",
+      "title": "Banking Tayari - vacancies",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:28:37.760Z"
+    },
+    {
+      "id": "visit_1790402723800",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:05:23.800Z"
+    },
+    {
+      "id": "visit_1790402692265",
+      "path": "/portal",
+      "title": "Banking Tayari - portal",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:04:52.265Z"
+    },
+    {
+      "id": "visit_1790402684119",
+      "path": "/notes-hub",
+      "title": "Banking Tayari - notes-hub",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T06:04:44.119Z"
+    },
+    {
+      "id": "visit_1790401765745",
+      "path": "/",
+      "title": "Banking Tayari - home",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:49:25.745Z"
+    },
+    {
+      "id": "visit_1790401732899",
+      "path": "/dashboard",
+      "title": "Banking Tayari - dashboard",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:52.899Z"
+    },
+    {
+      "id": "visit_1790401730830",
+      "path": "/library",
+      "title": "Banking Tayari - library",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:50.830Z"
+    },
+    {
+      "id": "visit_1790401727932",
+      "path": "/banks",
+      "title": "Banking Tayari - banks",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:47.932Z"
+    },
+    {
+      "id": "visit_1790401726062",
+      "path": "/store",
+      "title": "Banking Tayari - store",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:46.062Z"
+    },
+    {
+      "id": "visit_1790401722485",
+      "path": "/vacancies",
+      "title": "Banking Tayari - vacancies",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:42.485Z"
+    },
+    {
+      "id": "visit_1790401720891",
+      "path": "/current-affairs",
+      "title": "Banking Tayari - current-affairs",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:40.891Z"
+    },
+    {
+      "id": "visit_1790401720055",
+      "path": "/mock-tests",
+      "title": "Banking Tayari - mock-tests",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:40.055Z"
+    },
+    {
+      "id": "visit_1790401719375",
+      "path": "/practice",
+      "title": "Banking Tayari - practice",
+      "isGuest": true,
+      "userName": "Guest User",
+      "timestamp": "2026-09-26T05:48:39.375Z"
+    }
+  ]
+}
